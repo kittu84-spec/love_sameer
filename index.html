@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Sameer 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:monospace;
+color:white;
+}
+
+.page{
+position:fixed;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+flex-direction:column;
+}
+
+/* Hacker Page */
+#page1{
+background:black;
+color:#ff4fa3;
+font-size:22px;
+display:flex;
+}
+
+/* Love Pages */
+.lovepage{
+background:radial-gradient(circle,#ffb6d5,#ff4f9a);
+padding:20px;
+display:flex;
+}
+
+.terminal{
+background:rgba(0,0,0,0.7);
+padding:20px;
+border-radius:15px;
+width:85%;
+max-height:70%;
+overflow:auto;
+box-shadow:0 0 20px hotpink;
+font-size:18px;
+}
+
+/* Secret Page */
+#page4{
+background:black;
+color:#ff4fa3;
+display:flex;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+margin:10px;
+}
+
+.nextbtn{
+background:#ff4fa3;
+color:white;
+}
+
+#yes{
+background:#ff4fa3;
+color:white;
+}
+
+#no{
+background:#333;
+color:white;
+position:absolute;
+}
+
+/* Falling hearts */
+.heart{
+position:fixed;
+top:-40px;
+font-size:32px;
+animation:fall linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page">
+<div id="hacktext"></div>
+<button class="nextbtn" onclick="showPage(2)">ENTER 💗</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page lovepage">
+<div class="terminal" id="msg1"></div>
+<button class="nextbtn" onclick="showPage(3)">NEXT 💞</button>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_58c1f1b8f3.mp3">
+</audio>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page lovepage">
+<div class="terminal" id="msg2"></div>
+<button class="nextbtn" onclick="showPage(4)">SECRET 💘</button>
+</div>
+
+<!-- PAGE 4 SECRET -->
+<div id="page4" class="page">
+<h2>💖 Will you be mine forever? 💖</h2>
+<button id="yes">YES 💕</button>
+<button id="no">NO 😈</button>
+</div>
+
+<script>
+// PAGE SWITCH FUNCTION
+function showPage(n){
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+document.getElementById("page"+n).style.display="flex";
+}
+
+// Start with Page 1
+showPage(1);
+
+// Hacker typing
+const hacker = `Loading love system...
+Accessing Sameer’s heart...
+Injecting feelings from Vanshika...
+LOVE OVERRIDE SUCCESS 💖`;
+let hi=0;
+function hackType(){
+ if(hi<hacker.length){
+   document.getElementById("hacktext").innerHTML += hacker[hi]=="\n"?"<br>":hacker[hi];
+   hi++;
+   setTimeout(hackType,40);
+ }
+}
+hackType();
+
+// MESSAGE 1
+const message1 = `Sameer, I love you a little too much and sometimes it hurts that you can't give me your time. But I understand you have your reasons and I respect them. I will never force you to choose between me, your studies, or your family. I just love you and I know you love me too. I know that right now you can't show it in the way that make me feel loved, but it's okay. I will try to understand from now on. Just bear with me. I know I can be a little irritating sometimes, but please have a little patience because I love you so much. And I will try to change myself for you.`;
+
+let m1=0;
+function typeMsg1(){
+ if(m1<message1.length){
+   msg1.innerHTML += message1[m1];
+   m1++;
+   setTimeout(typeMsg1,25);
+ }
+}
+setTimeout(typeMsg1,1500);
+
+// MESSAGE 2
+const message2 = `And baby, you are only mine and mine only. I will beat you if you go somewhere else with slipper, belt, and etc. And I love you so so so much. Tomorrow is your paper. Give your best baby. I'm very proud of you. I'm very proud that you are trying. And baby, I'm going to be the mother of your child. We will have so much romance. So be romantic for me and send me your photos also.`;
+
+let m2=0;
+function typeMsg2(){
+ if(m2<message2.length){
+   msg2.innerHTML += message2[m2];
+   m2++;
+   setTimeout(typeMsg2,25);
+ }
+}
+
+// Start typing message 2 when page 3 opens
+document.querySelector("#page2 button").onclick = ()=>{
+ showPage(3);
+ setTimeout(typeMsg2,1000);
+};
+
+// Falling hearts
+function heart(){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="💖";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=(3+Math.random()*5)+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),8000);
+}
+setInterval(heart,120);
+
+// YES BUTTON
+document.getElementById("yes").onclick=()=>{
+ alert("I knew it baby muuh 😘💋");
+};
+
+// NO BUTTON RUN AWAY
+const no=document.getElementById("no");
+no.addEventListener("mouseover",()=>{
+ no.style.left=Math.random()*80+"vw";
+ no.style.top=Math.random()*80+"vh";
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
